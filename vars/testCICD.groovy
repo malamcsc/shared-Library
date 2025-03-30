@@ -7,10 +7,16 @@ def call(body) {
 	body()
 
 
-	if (!pipelineParams.AWS_REGIONS?.trim())
-	    pipelineParams.AWS_REGIONS = ''
-	if (!pipelineParams.AWS_REGIONS?.trim())
-	    pipelineParams.AWS_REGIONS = 'us-east-1'
+	
+	if (!pipelineParams.BRANCH?.trim())
+	    pipelineParams.BRANCH = ''
+	if (!pipelineParams.GIT_CREDENTIAL?.trim())
+	    pipelineParams.GIT_CREDENTIAL = ''
+	if (!pipelineParams.IMAGE_REPO?.trim())
+	    pipelineParams.IMAGE_REPO = ''
+	if (!pipelineParams.GITHUB_REPO?.trim())
+	    pipelineParams.GITHUB_REPO = ''
+	
 
 
 	pipeline {
