@@ -8,9 +8,7 @@ def call(body) {
 	body()
 
 
-	
-	if (!pipelineParams.BRANCH?.trim())
-	    pipelineParams.BRANCH = ''
+
 	if (!pipelineParams.GIT_CREDENTIAL?.trim())
 	    pipelineParams.GIT_CREDENTIAL = ''
 	if (!pipelineParams.IMAGE_REPO?.trim())
@@ -25,7 +23,6 @@ def call(body) {
 	  agent any
 		
 	  environment {
-		BRANCH = "${pipelineParms.BRANCH}"
 		GIT_CREDENTIAL = "${pipelineParms.GIT_CREDENTIAL}"
 		IMAGE_REPO = "${pipelineParms.IMAGE_REPO}"
 		GITHUB_REPO = "${pipelineParms.GITHUB_REPO}"
