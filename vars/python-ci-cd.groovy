@@ -18,9 +18,10 @@ def call(body) {
 	  agent any
 		
 	  environment {
-		AWS_REGIONS = "${pipelineParms.AWS_REGIONS}"
+		BRANCH = "${pipelineParms.BRANCH}"
 		GIT_CREDENTIAL = "${pipelineParms.GIT_CREDENTIAL}"
 		IMAGE_REPO = "${pipelineParms.IMAGE_REPO}"
+		GITHUB_REPO = "${pipelineParms.GITHUB_REPO}"
 	        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
 	    }
 	
@@ -28,18 +29,15 @@ def call(body) {
 	
 	    stage('Checkout Source') {
 	      steps {
-	        git url:'https://github.com/malamcsc/kubernetes_project.git', branch:'master', credentialsId: 'github'
+	        git url:"${GITHUB_REPO}", branch:"${BRANCH}", credentialsId: 'github'
 	      }
 	    }
 	
-	      stage('Checkout') {
-	        steps { git branch: 'master', credentialsId: 'github', url: 'https://github.com/malamcsc/kubernetes_project.git'
-	        }
-	      }
+	      
 	      stage("Build image") {
 	            steps {
 	                script {
-	                    myapp = docker.build("malamcsc/kubernetes_project:${env.BUILD_ID}")
+	                    myapp = docker.build("${IMAGE_REPO}":"${env.BUILD_ID}")
 	                }
 	            }
 	        }
