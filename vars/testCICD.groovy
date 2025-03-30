@@ -11,6 +11,8 @@ def call(body) {
 
 	if (!pipelineParams.GIT_CREDENTIAL?.trim())
 	    pipelineParams.GIT_CREDENTIAL = ''
+	if (!pipelineParams.BRANCH?.trim())
+ 	    pipelineParams.BRANCH = ''
 	if (!pipelineParams.IMAGE_REPO?.trim())
 	    pipelineParams.IMAGE_REPO = ''
 	if (!pipelineParams.GITHUB_REPO?.trim())
@@ -24,6 +26,7 @@ def call(body) {
 		
 	  environment {
 		GIT_CREDENTIAL = "${pipelineParms.GIT_CREDENTIAL}"
+		BRANCH = "${pipelineParms.BRANCH}"
 		IMAGE_REPO = "${pipelineParms.IMAGE_REPO}"
 		GITHUB_REPO = "${pipelineParms.GITHUB_REPO}"
 	        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
@@ -33,7 +36,7 @@ def call(body) {
 	
 	    stage('Checkout Source') {
 	      steps {
-	        git url:"${GITHUB_REPO}", branch:"main", credentialsId: "${GIT_CREDENTIAL}"
+	        git "url: ${GITHUB_REPO}", "branch:${BRANCH}", "credentialsId: ${GIT_CREDENTIAL}"
 	      }
 	    }
 	
