@@ -1,4 +1,5 @@
 def call(body) {
+	def pipelineParams = [:]
 	def image_tag = '0.0.0'
 
 
