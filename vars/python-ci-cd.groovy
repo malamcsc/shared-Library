@@ -29,7 +29,7 @@ def call(body) {
 	
 	    stage('Checkout Source') {
 	      steps {
-	        git url:"${GITHUB_REPO}", branch:"${BRANCH}", credentialsId: 'github'
+	        git url:"${GITHUB_REPO}", branch:"${BRANCH}", credentialsId: "${GIT_CREDENTIAL}"
 	      }
 	    }
 	
