@@ -25,10 +25,10 @@ def call(body) {
 	  agent any
 		
 	  environment {
-		GIT_CREDENTIAL = "${pipelineParms.GIT_CREDENTIAL}"
-		BRANCH = "${pipelineParms.BRANCH}"
-		IMAGE_REPO = "${pipelineParms.IMAGE_REPO}"
-		GITHUB_REPO = "${pipelineParms.GITHUB_REPO}"
+		GIT_CREDENTIAL = "${pipelineParams.GIT_CREDENTIAL}"
+		BRANCH = "${pipelineParams.BRANCH}"
+		IMAGE_REPO = "${pipelineParams.IMAGE_REPO}"
+		GITHUB_REPO = "${pipelineParams.GITHUB_REPO}"
 	        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
 	    }
 	
