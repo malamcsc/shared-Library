@@ -3,7 +3,7 @@ def call(body) {
 	def image_tag = '0.0.0'
 
 
-	body.resloveStrategy = Closure.DELEGATE_FIRST
+	body.resolveStrategy = Closure.DELEGATE_FIRST
 	body.delegate = pipelineParams
 	body()
 
