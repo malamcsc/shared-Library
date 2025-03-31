@@ -44,7 +44,7 @@ def call(body) {
 	      stage("Build image") {
 	            steps {
 	                script {
-	                    myapp = docker.build("${IMAGE_REPO}":"${env.BUILD_ID}")
+	                    myapp = docker.build("${IMAGE_REPO}:${env.BUILD_ID}")
 	                }
 	            }
 	        }
