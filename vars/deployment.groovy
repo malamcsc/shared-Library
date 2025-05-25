@@ -62,7 +62,7 @@ def call(body) {
                     sh """
                     kubectl get nodes
                     cd helm
-                    helm install flask_app_shared . --values values.yaml
+                    helm install flaskapp . --values values.yaml
 
                     """
 
