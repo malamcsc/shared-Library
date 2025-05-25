@@ -59,7 +59,13 @@ def call(body) {
         stage('Verify Connection') {
             steps {
                 script {
-                    sh "kubectl get nodes"
+                    sh """
+                    sh kubectl get nodes"
+                    cd helm
+                    helm install flask_app_shared . --values values.yaml
+
+                    """
+
                 }
             }
         }
