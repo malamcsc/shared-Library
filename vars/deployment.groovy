@@ -62,7 +62,7 @@ def call(body) {
                     sh """
                     kubectl get nodes
                     cd helm
-                    helm install flaskapp . --values values.yaml
+                    helm upgrade --install flaskapp . --values values.yaml
 
                     """
 
